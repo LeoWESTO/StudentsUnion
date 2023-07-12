@@ -1,0 +1,67 @@
+﻿@model StudentsUnion.ViewModels.BidViewModel
+@{
+
+}
+@if (ViewBag.IsEditable)
+{
+    <div class="container">
+        <h3 class="text-center p-3">Редактирование запроса</h3>
+        <form asp-action="EditBid" asp-controller="Bid" asp-route-id="@Model.Id">
+            <div class="form-group p-3">
+                <label asp-for="FIO">ФИО</label><br />
+                <input class="form-control" type="text" asp-for="FIO" />
+            </div>
+            <div class="form-group p-3">
+                <label asp-for="Phone">Номер телефона</label><br />
+                <input class="form-control" type="text" asp-for="Phone" />
+            </div>
+            <div class="form-group p-3">
+                <label asp-for="Description">Комментарий</label><br />
+                <input class="form-control" type="text" asp-for="Description" />
+            </div>
+            <div class="form-group p-3">
+                <label>Вид помощи</label>
+                <select class="form-select" asp-for="Type" asp-items="@ViewBag.Types">
+                </select>
+            </div>
+            <div class="form-group p-3">
+                <label>Статус</label>
+                <select class="form-select" asp-for="Status" asp-items="@ViewBag.Statuses">
+                </select>
+            </div>
+            <div class="form-group p-3">
+                <input class="btn btn-success" type="submit" value="Сохранить" />
+            </div>
+        </form>
+    </div>
+}
+else
+{
+    <div class="container">
+        <h3 class="text-center p-3">Редактирование запроса</h3>
+        <form asp-action="EditBid" asp-controller="Bid" asp-route-id="@Model.Id">
+            <div class="form-group p-3">
+                <label asp-for="FIO">ФИО</label><br />
+                <input class="form-control" type="text" asp-for="FIO" disabled />
+            </div>
+            <div class="form-group p-3">
+                <label asp-for="Phone">Номер телефона</label><br />
+                <input class="form-control" type="text" asp-for="Phone" disabled />
+            </div>
+            <div class="form-group p-3">
+                <label asp-for="Description">Номер телефона</label><br />
+                <input class="form-control" type="text" asp-for="Description" disabled />
+            </div>
+            <div class="form-group p-3">
+                <label>Вид помощи</label>
+                <select class="form-select" asp-for="Type" asp-items="@ViewBag.Types" disabled>
+                </select>
+            </div>
+            <div class="form-group p-3">
+                <label>Статус</label>
+                <select class="form-select" asp-for="Status" asp-items="@ViewBag.Statuses" disabled>
+                </select>
+            </div>
+        </form>
+    </div>
+}

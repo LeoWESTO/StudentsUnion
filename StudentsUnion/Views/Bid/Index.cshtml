@@ -1,0 +1,43 @@
+﻿@{
+    @model IEnumerable<StudentsUnion.ViewModels.BidViewModel>
+}
+
+<div class="container">
+    <h3 class="p-3 text-center">@ViewBag.Title</h3>
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Время изменения</th>
+                <th>ФИО</th>
+                <th>Номер телефона</th>
+                <th>Вид помощи</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var b in Model)
+            {
+                <tr>
+                    <td>@b.Id</td>
+                    <td>@b.CreationTime.ToString()</td>
+                    <td>@b.FIO</td>
+                    <td>@b.Phone</td>
+                    <td>@b.Type</td>
+                    <td>
+                        <a class="btn btn-secondary btn-sm" asp-action="EditBid" asp-controller="Bid" asp-route-id="@b.Id">Просмотр</a>
+                    </td>
+                    @if(User.IsInRole("Admin") && b.Status != "Working")
+                    {
+                        <td>
+                            <form asp-action="Delete" asp-controller="Bid" asp-route-id="@b.Id" method="post">
+                                <input type="submit" class="btn btn-danger btn-sm" value="Удалить" />
+                            </form>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

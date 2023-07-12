@@ -1,0 +1,41 @@
+﻿@model StudentsUnion.ViewModels.UserViewModel
+@{
+
+}
+<div class="container">
+    <h3 class="text-center p-3">Добавление аккаунта</h3>
+    <form asp-action="CreateUser" asp-controller="User">
+        <div class="form-group p-3">
+            <label asp-for="FIO">ФИО</label><br />
+            <input class="form-control" type="text" asp-for="FIO" />
+        </div>
+        <div class="form-group p-3">
+            <label asp-for="Email">Эл. почта</label><br />
+            <input class="form-control" type="text" asp-for="Email" />
+        </div>
+        <div class="form-group p-3">
+            <label asp-for="Phone">Номер телефона</label><br />
+            <input class="form-control" type="text" asp-for="Phone" />
+        </div>
+        <div class="form-group p-3">
+            <label asp-for="Address">Адрес</label><br />
+            <input class="form-control" type="text" asp-for="Address" />
+        </div>
+        <div class="form-group p-3">
+            <label asp-for="Position">Должность</label><br />
+            <input class="form-control" type="text" asp-for="Position" />
+        </div>
+        <div class="form-group p-3">
+            <label>Роль</label>
+            <select class="form-select" asp-for="Role" asp-items="@ViewBag.Roles">
+            </select>
+        </div>
+        <div class="form-group p-3">
+            <label asp-for="Password">Пароль</label><br />
+            <input class="form-control" type="text" asp-for="Password" />
+        </div>
+        <div class="form-group p-3">
+            <input class="btn btn-success" type="submit" value="Сохранить" />
+        </div>
+    </form>
+</div>
